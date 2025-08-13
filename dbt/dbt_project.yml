@@ -1,0 +1,13 @@
+﻿name: 'legal_demo'
+version: '1.0.0'
+config-version: 2
+
+profile: 'legal_demo'
+
+model-paths: ["models"]
+
+models:
+  legal_demo:
+    acris_cases:
+      materialized: table
+      alias: acris_cases

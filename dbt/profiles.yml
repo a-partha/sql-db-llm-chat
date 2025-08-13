@@ -1,0 +1,8 @@
+﻿legal_demo:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /opt/airflow/data/legal_demo.duckdb
+      threads: 1
+      schema: main
