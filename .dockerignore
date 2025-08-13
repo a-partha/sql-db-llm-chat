@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+web/node_modules
