@@ -388,6 +388,8 @@ import json
 from datetime import datetime
 from airflow.decorators import dag, task
 
+# Optional: raise timeout via env var (takes effect on next Airflow start)
+os.environ["AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT"] = "60"
 
 @dag(
     start_date=datetime(2025, 1, 1),
@@ -403,7 +405,7 @@ def legal_property_pipeline():
 
     @task
     def build_dbt_models() -> None:
-        import os  # light import is fine here
+        import os
         dbt_path = "/opt/airflow/dbt"
         os.system(f"cd {dbt_path} && dbt run --profiles-dir {dbt_path}")
 
@@ -462,8 +464,6 @@ def legal_property_pipeline():
         import json
         import joblib
         import google.generativeai as genai
-        from sklearn.feature_extraction.text import TfidfVectorizer
-        from sklearn.neighbors import NearestNeighbors
         import duckdb
 
         dag_run_conf = context.get("dag_run").conf if context.get("dag_run") else {}
